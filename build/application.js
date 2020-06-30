@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sayHello\", function() { return sayHello; });\nfunction sayHello() {\r\n    alert('Hello I am Webpack, Im watching you!')\r\n}\r\n\r\n//module.exports = sayHello ////this is old JS\r\n\n\n//# sourceURL=webpack:///./src/greetings.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sayHello\", function() { return sayHello; });\nfunction sayHello() {\n  var tool = 'webpack';\n  alert(\"Hello I am \".concat(tool, \", Im watching you!\"));\n  console.log('Can you find me?');\n} //module.exports = sayHello ////this is old JS\n\n\n\n\n//# sourceURL=webpack:///./src/greetings.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _greetings_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./greetings.js */ \"./src/greetings.js\");\n//var sayHello = require('./greetings.js') ////this is old JS\r\n\r\n\r\nObject(_greetings_js__WEBPACK_IMPORTED_MODULE_0__[\"sayHello\"])()\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _greetings_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./greetings.js */ \"./src/greetings.js\");\n//var sayHello = require('./greetings.js') ////this is old JS\n\nObject(_greetings_js__WEBPACK_IMPORTED_MODULE_0__[\"sayHello\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

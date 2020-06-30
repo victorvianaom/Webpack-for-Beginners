@@ -3,6 +3,7 @@ const path = require('path')
 module.exports = {
     watch: true,
     mode: "development",
+    devtool: "eval-cheap-module-source-map",//show the right line when debuging
     entry: "./src/index.js",
     output: {
         //filename: "../build/main.js"
