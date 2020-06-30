@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/victorvianaom/Webpack-for-Beginners#readme",
   "devDependencies": {
+    "path": "^0.12.7",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   }
