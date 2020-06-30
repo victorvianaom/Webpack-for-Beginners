@@ -23,6 +23,7 @@ module.exports = {
                     }
                 }
             },
+            /*this code is before I installed postcss-loader, the recommended way is right below this commented code
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
@@ -30,6 +31,44 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader']
+            }
+            */
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    /*'postcss-loader' in place of this string we put an object the following code: */
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                require('autoprefixer')({
+                                    overrideBrowserslist: ['last 3 versions', 'ie >9']
+                                })
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.scss$/i,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    /*'postcss-loader' in place of this string we put an object the following code: */
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                require('autoprefixer')({
+                                    overrideBrowserslist: ['last 3 versions', 'ie >9']
+                                })
+                            ]
+                        }
+                    },
+                    'sass-loader'
+                ]
             }
         ]
     }
