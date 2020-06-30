@@ -4,7 +4,7 @@
   "description": "My work on the Book \"Webpack for Beginners\" (Mohamed Bouzid)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
