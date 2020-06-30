@@ -4,7 +4,7 @@
   "description": "My work on the Book \"Webpack for Beginners\" (Mohamed Bouzid)",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode=production"
+    "dev": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/victorvianaom/Webpack-for-Beginners#readme",
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
     "path": "^0.12.7",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
