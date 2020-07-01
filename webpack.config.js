@@ -1,21 +1,24 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin')
 
 module.exports = {
     watch: true,
-    mode: "development",
+    mode: "production",
     devtool: "eval-cheap-module-source-map",//show the right line when debuging
     entry: "./src/index.js",
     output: {
         //filename: "../build/main.js"
         filename: "application.js", //the default folder is dist
-        path: path.resolve(__dirname, 'build') //another way of catching the relative path
+        path: path.resolve(__dirname, 'dist') //another way of catching the relative path
     },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: 'application.css' //this is where all the style will be put in the output folder
-        })
-    ],
+    optimization: { //Setting a optimization.minimizer overrides the defaults provided by webpack, so I need to put the JS minimizer too
+        minimizer: [
+            new TerserJSPlugin({}), //webpack default JS minimizer, but I need to put because I'm overriding
+            new OptimizeCssAssetsPlugin({})//CSS minimizer
+        ]
+    },
     // configuring babel-loader
     module: { // there's a module object
         rules: [ // then there's a array of rules for loaders
@@ -77,7 +80,25 @@ module.exports = {
                     },
                     'sass-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            fallback: 'file-loader', //that's the default option, so it can be removed from here. It specifies an alternative loader to use when a target file's size exceeds the limit.
+                            name: '[name]_[hash:7].[ext]',
+                        },
+                    },
+                ],
             }
         ]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'application.css' //this is where all the style will be put in the output folder
+        })
+    ]
 }
