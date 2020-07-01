@@ -1,4 +1,5 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     watch: true,
@@ -10,6 +11,11 @@ module.exports = {
         filename: "application.js", //the default folder is dist
         path: path.resolve(__dirname, 'build') //another way of catching the relative path
     },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'application.css' //this is where all the style will be put in the output folder
+        })
+    ],
     // configuring babel-loader
     module: { // there's a module object
         rules: [ // then there's a array of rules for loaders
@@ -36,7 +42,8 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [
-                    'style-loader',
+                    /*'style-loader', thus is to inject the css in <style> tags in the DOM*/
+                    MiniCssExtractPlugin.loader, //this is for injecting the css in a new file
                     { loader: 'css-loader', options: { importLoaders: 1 } },
                     /*'postcss-loader' in place of this string we put an object the following code: */
                     {
@@ -54,7 +61,8 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: [
-                    'style-loader',
+                    /*'style-loader', thus is to inject the css in <style> tags in the DOM*/
+                    MiniCssExtractPlugin.loader, //this is for injecting the css in a new file
                     { loader: 'css-loader', options: { importLoaders: 1 } },
                     /*'postcss-loader' in place of this string we put an object the following code: */
                     {
