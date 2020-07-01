@@ -22,7 +22,8 @@ module.exports = {
     resolve: {
         alias: {
             CssFolder: path.resolve(__dirname, 'src/stylesheets/')
-        }
+        },
+        modules: [path.resolve(__dirname,'src/downloaded_libs'), 'node_modules'] //tells webpack to go search modules first in that folder, and after in the node_modules, which is the default
     },
     optimization: { //Setting a optimization.minimizer overrides the defaults provided by webpack, so I need to put the JS minimizer too
         minimizer: [
