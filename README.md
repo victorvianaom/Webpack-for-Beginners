@@ -5,8 +5,8 @@ My work on the Book "Webpack for Beginners" (Mohamed Bouzid)
 2. Write Modular Code ✅
 3. Loaders and Plugins ✅
 4. Cache ✅
-### 4 to go:
-5. Resolving Folders
+5. Resolving Folders ✅
+### 3 to go:
 6. Webpack DevServer
 7. Installing Third-Party Libraries
 8. Conclusion
