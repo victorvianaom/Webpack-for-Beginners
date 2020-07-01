@@ -4,6 +4,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WebpackManifestPlugin = require('webpack-manifest-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     watch: true,
@@ -103,6 +104,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/template.html'
+        }),
         new WebpackManifestPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
