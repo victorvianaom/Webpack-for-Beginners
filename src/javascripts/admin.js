@@ -1,4 +1,5 @@
-import { lib  } from './lib.css'
+//import { lib  } from '../stylesheets/lib.css'
+import { lib  } from 'CssFolder/lib.css'
 
 function welcome() {
     alert('Welcome to the admin area')

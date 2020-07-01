@@ -11,13 +11,18 @@ module.exports = {
     mode: "production",
     devtool: "eval-cheap-module-source-map",//show the right line when debuging
     entry: {
-        application: "./src/index.js", // the name of the output will be the properties name: 'application'
-        admin: './src/admin.js', // the name of the output will be the properties name: 'admin'
+        application: "./src/javascripts/index.js", // the name of the output will be the properties name: 'application'
+        admin: './src/javascripts/admin.js', // the name of the output will be the properties name: 'admin'
     },
     output: {
         //filename: "../build/main.js"
         filename: "[name]-[contenthash].js", //the default folder is dist
         path: path.resolve(__dirname, 'dist') //another way of catching the relative path
+    },
+    resolve: {
+        alias: {
+            CssFolder: path.resolve(__dirname, 'src/stylesheets/')
+        }
     },
     optimization: { //Setting a optimization.minimizer overrides the defaults provided by webpack, so I need to put the JS minimizer too
         minimizer: [
