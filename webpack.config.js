@@ -7,10 +7,13 @@ module.exports = {
     watch: true,
     mode: "production",
     devtool: "eval-cheap-module-source-map",//show the right line when debuging
-    entry: "./src/index.js",
+    entry: {
+        application: "./src/index.js", // the name of the output will be the properties name: 'application'
+        admin: './src/admin.js', // the name of the output will be the properties name: 'admin'
+    },
     output: {
         //filename: "../build/main.js"
-        filename: "application.js", //the default folder is dist
+        filename: "[name]-[contenthash].js", //the default folder is dist
         path: path.resolve(__dirname, 'dist') //another way of catching the relative path
     },
     optimization: { //Setting a optimization.minimizer overrides the defaults provided by webpack, so I need to put the JS minimizer too
@@ -92,13 +95,14 @@ module.exports = {
                             name: '[name]_[hash:7].[ext]',
                         },
                     },
+                    { loader: 'image-webpack-loader' },
                 ],
-            }
+            },
         ]
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'application.css' //this is where all the style will be put in the output folder
+            filename: '[name]-[contenthash].css' //this is where all the style will be put in the output folder
         })
     ]
 }
