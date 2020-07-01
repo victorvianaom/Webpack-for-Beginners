@@ -6,7 +6,7 @@ My work on the Book "Webpack for Beginners" (Mohamed Bouzid)
 3. Loaders and Plugins ✅
 4. Cache ✅
 5. Resolving Folders ✅
-### 3 to go:
-6. Webpack DevServer
+6. Webpack DevServer ✅
+### 2 to go:
 7. Installing Third-Party Libraries
 8. Conclusion
