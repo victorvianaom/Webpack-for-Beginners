@@ -10,6 +10,16 @@ import 'jquery-ui'//I need to import jquery-ui before importing the widgets
 //import 'jquery-ui/ui/widgets/droppable'
 import 'jquery-ui/ui/widgets/datepicker'
 import Quill from 'quill'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+
+ClassicEditor
+    .create( document.querySelector( '#ckeditor' ) )
+    .then( editor => {
+        console.log( editor )
+    } )
+    .catch( error => {
+        console.error( error )
+    } )
 
 var quill = new Quill('#editor', {
     theme: 'snow'

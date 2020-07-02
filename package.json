@@ -42,6 +42,7 @@
     "webpack-manifest-plugin": "^2.2.0"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^20.0.0",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
