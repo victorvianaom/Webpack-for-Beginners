@@ -6,14 +6,17 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WebpackManifestPlugin = require('webpack-manifest-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const mode = "development"
+
 module.exports = {
     devServer: {
         port: 9000,
         contentBase: path.resolve(__dirname, 'dist'),
-        publicPath: '/assets/'
+        publicPath: '/assets/',
+        hot: true,
     },
     watch: true,
-    mode: "production",
+    mode: mode,
     devtool: "eval-cheap-module-source-map",//show the right line when debuging
     entry: {
         application: "./src/javascripts/index.js", // the name of the output will be the properties name: 'application'
@@ -21,7 +24,7 @@ module.exports = {
     },
     output: {
         //filename: "../build/main.js"
-        filename: "[name]-[contenthash].js", //the default folder is dist
+        filename: mode == 'production' ? "[name]-[contenthash].js" : '[name].js', //the webpack-dev-server does not accept contenthash or chunkhash
         path: path.resolve(__dirname, 'dist') //another way of catching the relative path
     },
     resolve: {
@@ -63,7 +66,12 @@ module.exports = {
                 test: /\.css$/i,
                 use: [
                     /*'style-loader', thus is to inject the css in <style> tags in the DOM*/
-                    MiniCssExtractPlugin.loader, //this is for injecting the css in a new file
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: true, // I just need to add this for the HMR to work with the CSS files
+                        },
+                    }, //this is for injecting the css in a new file
                     { loader: 'css-loader', options: { importLoaders: 1 } },
                     /*'postcss-loader' in place of this string we put an object the following code: */
                     {
@@ -82,7 +90,12 @@ module.exports = {
                 test: /\.scss$/i,
                 use: [
                     /*'style-loader', thus is to inject the css in <style> tags in the DOM*/
-                    MiniCssExtractPlugin.loader, //this is for injecting the css in a new file
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: true, // I just need to add this for the HMR to work with the CSS files
+                        },
+                    }, //this is for injecting the css in a new file
                     { loader: 'css-loader', options: { importLoaders: 1 } },
                     /*'postcss-loader' in place of this string we put an object the following code: */
                     {
@@ -106,7 +119,7 @@ module.exports = {
                         options: {
                             limit: 8192,
                             fallback: 'file-loader', //that's the default option, so it can be removed from here. It specifies an alternative loader to use when a target file's size exceeds the limit.
-                            name: '[name]_[hash:7].[ext]',
+                            name: mode == 'production' ? '[name]_[hash:7].[ext]' : '[name].[ext]',
                         },
                     },
                     { loader: 'image-webpack-loader' },
@@ -121,7 +134,7 @@ module.exports = {
         new WebpackManifestPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: '[name]-[contenthash].css' //this is where all the style will be put in the output folder
+            filename: mode == 'production' ? '[name]-[contenthash].css' : '[name].css' //this is where all the style will be put in the output folder
         })
     ]
 }

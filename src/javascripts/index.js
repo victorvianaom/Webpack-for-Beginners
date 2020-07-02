@@ -4,6 +4,12 @@ import { sayHello } from './greetings.js'
 import { application } from 'CssFolder/application.scss'
 import $ from 'jquery-3.5.1.js'
 
+if (module.hot) {
+    module.hot.accept(/*function (err) {
+        console.log(err)
+    }*/)
+}
+
 sayHello()
 
-$('body').append('<div style="background: yellow; padding: 20px;">Hello jQuery!</div>')
+$('body').append('<div style="background: white; padding: 20px;">Hello jQuery!</div>')
