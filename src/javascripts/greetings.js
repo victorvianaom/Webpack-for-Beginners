@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'jquery' // I can comment this because I configured webpack.ProvidePlugin
 
 export function sayHello() {//I put export befor 'function' so there`s no need to put that export{ sayHello } bellow
     let tool = 'webpack'
