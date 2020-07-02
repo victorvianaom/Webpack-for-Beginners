@@ -14,7 +14,7 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'dist'),
         publicPath: '/assets/',
         hot: true,
-        overlay: true,
+        overlay: true, //this throws the error message directly in the web page in the browser
     },
     watch: true,
     mode: mode,

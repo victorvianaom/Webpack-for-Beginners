@@ -2,7 +2,11 @@
 import { sayHello } from './greetings.js'
 //import { application } from '../stylesheets/application.scss'
 import { application } from 'CssFolder/application.scss'
-import $ from 'jquery-3.5.1.js'
+import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap' // this is the JS file, as the "main" in the package json of bootstrap determins
+
+$('[data-toggle="tooltip"]').tooltip()
 
 if (module.hot) {
     module.hot.accept(/*function (err) {
@@ -10,6 +14,6 @@ if (module.hot) {
     }*/)
 }
 
-sayHello()
+$('body').append('<div style="background: green; padding: 20px;">Hello jQuery!</div>')
 
-$('body').append('<div style="background: white; padding: 20px;">Hello jQuery!</div>')
+sayHello()
