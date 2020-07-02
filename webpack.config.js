@@ -7,6 +7,11 @@ const WebpackManifestPlugin = require('webpack-manifest-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+    devServer: {
+        port: 9000,
+        contentBase: path.resolve(__dirname, 'dist'),
+        publicPath: '/assets/'
+    },
     watch: true,
     mode: "production",
     devtool: "eval-cheap-module-source-map",//show the right line when debuging
