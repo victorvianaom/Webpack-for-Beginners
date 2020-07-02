@@ -4,8 +4,8 @@
   "description": "My work on the Book \"Webpack for Beginners\" (Mohamed Bouzid)",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack",
-    "serve": "webpack-dev-server"
+    "build": "webpack",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

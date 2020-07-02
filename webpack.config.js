@@ -14,6 +14,7 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'dist'),
         publicPath: '/assets/',
         hot: true,
+        overlay: true,
     },
     watch: true,
     mode: mode,
