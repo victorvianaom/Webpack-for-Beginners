@@ -3,7 +3,7 @@ import { sayHello } from './greetings.js'
 //import { application } from '../stylesheets/application.scss'
 import { application } from 'CssFolder/application.scss'
 import $ from 'jquery'
-import 'bootstrap/dist/css/bootstrap.css'
+//import 'bootstrap/dist/css/bootstrap.css' // I imported in the aplication.scss file
 import 'bootstrap' // this is the JS file, as the "main" in the package json of bootstrap determins
 
 $('[data-toggle="tooltip"]').tooltip()

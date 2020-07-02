@@ -5,6 +5,7 @@ const TerserJSPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WebpackManifestPlugin = require('webpack-manifest-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 const mode = "development"
 
@@ -129,6 +130,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            "window.$": 'jquery', //this will be accessed in the build-time, not the run time
+            "window.jQuery": 'jquery', //this will be accessed in the build-time, not the run time
+        }),
         new HtmlWebpackPlugin({
             template: './src/template.html'
         }),
